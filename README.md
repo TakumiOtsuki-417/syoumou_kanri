@@ -1,24 +1,56 @@
-# README
+# このアプリケーションについて
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+「消耗管理」はその名前の通り、消耗品を管理することだけにフォーカスしたようなWebアプリケーションです。
 
-Things you may want to cover:
+# テーブル設計
 
-* Ruby version
+テーブルは消耗品テーブル、消耗データの２種類で最低限成立します。
 
-* System dependencies
+## 消耗品(items)
 
-* Configuration
+### テーブル
 
-* Database creation
+| Column  | Type    | Options     |
+| ------- | ------- | ----------- |
+| name    | string  | null: false |
+| price   | integer | null: false |
+| amount  | integer | null: false |
+| genre   | integer | null: false |
+| day     | date    | null: false |
+| place   | string  | null: false |
+| comment | text    |             |
 
-* Database initialization
+### アソシエーション
 
-* How to run the test suite
+has_many :damages
 
-* Services (job queues, cache servers, search engines, etc.)
+## 消耗(damages)
 
-* Deployment instructions
+### テーブル
 
-* ...
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| amount  | integer    | null: false                   |
+| day     | date       | null: false                   |
+| comment | text       |                               |
+| item_id | references | null:false, foreign_key: true |
+
+
+### アソシエーション
+
+belongs_to :item
+
+
+# できること
+
+主に以下の作業ができるようにします。
+- 購入した消耗品を登録できること
+- 消耗品の使用分を登録できること
+- 消耗品の残量を確認できること
+- １日・１週間分などの期間における費用を算出できること
+
+
+
+
+
+
