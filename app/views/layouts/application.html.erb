@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="Ja">
   <head>
+    <meta name="viewport" content="width=device-width">
     <title>SyoumouKanri</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,8 +9,31 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
+      <div id="inner-header" class="inner">
+        <div id="block-logo">
+          <a href=""><h1>消耗管理アプリ</h1></a>
+        </div>
+        <nav id="block-menu">
+          <ul>
+            <li><a href="">購入登録</a></li>
+            <li><a href="">消費登録</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div id="inner-main" class="inner">
     <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <div class="inner">
+        <div id="block-copyright">
+          <small>消耗管理アプリ©︎俺</small>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
