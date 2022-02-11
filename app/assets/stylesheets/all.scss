@@ -1,0 +1,164 @@
+// フォント関連
+
+html {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+// リセット
+
+* {
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+header, footer, main {
+  width: 100%;
+}
+
+header {
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+  padding: 30px 5px;
+}
+
+footer {
+  border-top: 1px solid rgba(0,0,0,0.8);
+  padding: 30px 5px;
+}
+
+main {
+  padding: 50px 5px;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.block-fullwidth {
+  padding-bottom: 50px;
+}
+
+/* ヘッダーとフッター部分 */
+
+#inner-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#block-menu ul {
+  display: flex;
+  justify-content: start;
+}
+
+#block-menu ul li {
+  margin-right: 10px;
+}
+
+
+#inner-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#block-copyright {
+  text-align: center;
+}
+
+
+/* itemのレイアウト */
+
+
+.item {
+  margin-bottom: 30px;
+}
+
+.item ul{
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.item > span {
+  display: block;
+  width: 100%;
+}
+
+.itemdata-s {
+  width: 25%;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.6);
+  padding: 0 10px;
+}
+
+.itemdata-l {
+  width: 50%;
+  border: 1px solid rgba(0,0,0,0.6);
+  padding: 0 10px;
+}
+
+.item-syouhi .itemdata-l {
+  width: 100%;
+}
+
+.itemdata-l span, .itemdata-s span {
+  display: block;
+  transform: scale(0.7);
+}
+
+.itemdata-l span{
+  text-align: center;
+}
+
+
+
+
+/* フォーム関係 */
+
+#block-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+#block-form input {
+  display: block;
+  width: 40%;
+  padding: 3px 5px;
+  border: 2px solid rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
+#block-form select {
+  display: block;
+  width: 40%;
+  padding: 3px 5px;
+  border: 2px solid rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
+#block-form textarea {
+  width: 40%;
+  height: 180px;
+  overflow-y: scroll;
+  padding: 3px 5px;
+  border: 2px solid rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
