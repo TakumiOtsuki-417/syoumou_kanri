@@ -1,4 +1,29 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.all
+    sum_price = 0
+    @items.each do |item|
+      sum_price += item[:price]
+    end
+    @all_price = sum_price  
   end
+  def new
+    @item = Item.new
+  end
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      @item.valid?
+      @error = @item.errors.full_messages
+      binding.pry
+      render :new
+    end
+  end
+  private
+  def item_params
+    params.require(:item).permit(:name, :date, :genre_id, :from_id, :amount, :price, :comment)
+  end
+
 end

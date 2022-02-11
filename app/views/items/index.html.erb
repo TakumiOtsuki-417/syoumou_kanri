@@ -1,52 +1,25 @@
         <div class="block-fullwidth">
-          <h2>今月の買い物金額は333円です</h2>
+          <h2>今月の買い物金額は<%= @all_price %>円です</h2>
           <div class="block-items">
             <ul>
+              <% @items.each do |item| %>
               <li class="item">
-                <span>number:12345678</span>
+                <span><%= item.name %></span>
                 <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-s"><span>Genre: </span>野菜</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
+                  <li class="itemdata-s"><span>Date: </span><%= item.date %></li>
+                  <li class="itemdata-s"><span>Name: </span><%= item.name %></li>
+                  <li class="itemdata-s"><span>Amount: </span><%= item.amount %>%</li>
+                  <li class="itemdata-s"><span>Price: </span><%= item.price %>円</li>
+                  <li class="itemdata-s"><span>From: </span><%= item.from.name %></li>
+                  <li class="itemdata-s"><span>Genre: </span><%= item.genre.name %></li>
+                  <% comment = "" %>
+                  <% unless item.comment.nil? %>
+                  <% comment = item.comment %>
+                  <% end %>
+                  <li class="itemdata-l"><span>Comment: </span><%= comment %></li>
                 </ul>
               </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
+              <% end %>
             </ul>
           </div>
         </div>
