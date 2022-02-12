@@ -1,0 +1,22 @@
+<%= form_with(model: item, local: true) do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+            <div class="block-halfwidth">
+              <%= f.label :name, "買ったやつの名称" %>
+              <%= f.text_field :name, placeholder: "名称を入力" %>
+              <%= f.label :date, "買った日付" %>
+              <%= f.date_field :date %>
+              <%= f.label :genre_id, "ジャンル" %>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, {}, {} %>
+            </div>
+            <div class="block-halfwidth">
+              <%= f.label :amount, "購入数(%)" %>
+              <%= f.number_field :amount %>
+              <%= f.label :price, "価格(円)" %>
+              <%= f.number_field :price %>
+              <%= f.label :from_id, "どこで買った？" %>
+              <%= f.collection_select :from_id, From.all, :id, :name, {}, {} %>
+              <%= f.label :comment, "備考" %>
+              <%= f.text_area :comment, placeholder: "コメントがあればメモしてください" %>
+              <input type="submit" value="記録する！">
+            </div>
+            <% end %>

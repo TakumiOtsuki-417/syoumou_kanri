@@ -10,15 +10,15 @@
 
 ### テーブル
 
-| Column  | Type    | Options     |
-| ------- | ------- | ----------- |
-| name    | string  | null: false |
-| price   | integer | null: false |
-| amount  | integer | null: false |
-| genre   | integer | null: false |
-| day     | date    | null: false |
-| place   | string  | null: false |
-| comment | text    |             |
+| Column   | Type    | Options     |
+| -------- | ------- | ----------- |
+| name     | string  | null: false |
+| price    | integer | null: false |
+| amount   | integer | null: false |
+| genre_id | integer | null: false |
+| date     | date    | null: false |
+| from_id  | integer | null: false |
+| comment  | text    |             |
 
 ### アソシエーション
 
@@ -31,7 +31,7 @@ has_many :damages
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
 | amount  | integer    | null: false                   |
-| day     | date       | null: false                   |
+| date    | date       | null: false                   |
 | comment | text       |                               |
 | item_id | references | null:false, foreign_key: true |
 
