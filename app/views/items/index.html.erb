@@ -4,7 +4,7 @@
             <ul>
               <% @items.each do |item| %>
               <li class="item">
-                <span><%= item.name %></span>
+                <span>固有ID: <%= item.id %></span>
                 <ul>
                   <li class="itemdata-s"><span>Date: </span><%= item.date %></li>
                   <li class="itemdata-s"><span>Name: </span><%= item.name %></li>
@@ -18,7 +18,10 @@
                   <% end %>
                   <li class="itemdata-l"><span>Comment: </span><%= comment %></li>
                 </ul>
-                <div><%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %></div>
+                <div>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %>
+                  <%= link_to 'このアイテム情報を削除', item_path(item.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
+                </div>
               </li>
               <% end %>
             </ul>
