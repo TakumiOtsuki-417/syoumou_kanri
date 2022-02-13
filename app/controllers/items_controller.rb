@@ -5,11 +5,18 @@ class ItemsController < ApplicationController
     @items.each do |item|
       sum_price += item[:price]
     end
-    @all_price = sum_price  
+    @all_price = sum_price
+    # showのリストとの内容分岐
+    @rest = nil
   end
   def show
     @item = Item.find(params[:id])
-    @items = []
+    @damages = Damage.where(item_id: @item.id)
+    @total_damage_amount = 0
+    @damages.each do |damage|
+      @total_damage_amount += damage.amount
+    end
+    @rest = @item.amount - @total_damage_amount
   end
   def new
     @item = Item.new
@@ -19,9 +26,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.valid?
-      @error = @item.errors.full_messages
-      binding.pry
       render :new
     end
   end

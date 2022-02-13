@@ -24,4 +24,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :from
+
+  def selection_name
+    span = ' : '
+    self.id + span + self.name
+  end
 end

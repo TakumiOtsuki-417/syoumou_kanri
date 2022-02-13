@@ -3,7 +3,7 @@
           <div class="block-items">
             <ul>
               <% @items.each do |item| %>
-              <%= render partial: 'shared/itemloop', locals: {item: item} %>
+              <%= render partial: 'shared/itemloop', locals: {item: item, rest: @rest} %>
               <% end %>
             </ul>
           </div>
@@ -16,10 +16,10 @@
                 <span>number:12345678</span>
                 <ul>
                   <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
+                  <li class="itemdata-s"><span>アイテム名: </span>にんじん</li>
                   <li class="itemdata-s"><span>消費量: </span>100%</li>
                   <li class="itemdata-s"><span>消費計算Price: </span>332円</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメント</li>
+                  <li class="itemdata-l"><span>備考: </span>コメントコメントコメントコメントコメント</li>
                 </ul>
               </li>
               <li class="item item-syouhi">

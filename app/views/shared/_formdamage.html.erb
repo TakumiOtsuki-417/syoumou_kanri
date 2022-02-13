@@ -1,0 +1,15 @@
+<%= form_with(model: [item, damage], local: true) do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+            <div class="block-halfwidth">
+              <%= f.label :date, "消費の日付" %>
+              <%= f.date_field :date %>
+            </div>
+            <div class="block-halfwidth">
+              <%= f.label :amount, "消費量(%)" %>
+              <%= f.number_field :amount %>
+              <%= f.label :comment, "備考" %>
+              <%= f.text_area :comment, placeholder: "コメントがあればメモしてください" %>
+              <input name="damage[item_id]" type="hidden" value=<%= item.id %>>
+              <input type="submit" value="記録する！">
+            </div>
+            <% end %>
