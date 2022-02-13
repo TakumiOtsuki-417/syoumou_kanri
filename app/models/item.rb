@@ -18,6 +18,7 @@ class Item < ApplicationRecord
   end
 
   #アソシエーション
+  has_many :damages
 
   #アクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_135928) do
+ActiveRecord::Schema.define(version: 2022_02_13_121600) do
+
+  create_table "damages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "amount", null: false
+    t.text "comment"
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_damages_on_item_id"
+  end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -24,4 +34,5 @@ ActiveRecord::Schema.define(version: 2022_02_04_135928) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "damages", "items"
 end
