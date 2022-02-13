@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 2022_02_04_135928) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", null: false
+    t.date "date", null: false
+    t.integer "genre_id", null: false
     t.integer "amount", null: false
-    t.integer "genre", null: false
-    t.date "day"
-    t.string "place"
+    t.integer "price", null: false
+    t.integer "from_id", null: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

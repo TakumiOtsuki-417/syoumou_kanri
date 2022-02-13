@@ -1,52 +1,10 @@
         <div class="block-fullwidth">
-          <h2>今月の買い物金額は333円です</h2>
+          <h2>今月の買い物金額は<%= @all_price %>円です</h2>
           <div class="block-items">
             <ul>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-s"><span>Genre: </span>野菜</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>Amount: </span>100%</li>
-                  <li class="itemdata-s"><span>Price: </span>332円</li>
-                  <li class="itemdata-s"><span>From: </span>たまや</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
+              <% @items.each do |item| %>
+              <%= render partial: 'shared/itemloop', locals: {item: item} %>
+              <% end %>
             </ul>
           </div>
         </div>
