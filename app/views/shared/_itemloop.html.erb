@@ -1,0 +1,20 @@
+              <li class="item">
+                <span>固有ID: <%= item.id %></span>
+                <ul>
+                  <li class="itemdata-s"><span>Date: </span><%= item.date %></li>
+                  <li class="itemdata-s"><span>Name: </span><%= item.name %></li>
+                  <li class="itemdata-s"><span>Amount: </span><%= item.amount %>%</li>
+                  <li class="itemdata-s"><span>Price: </span><%= item.price %>円</li>
+                  <li class="itemdata-s"><span>From: </span><%= item.from.name %></li>
+                  <li class="itemdata-s"><span>Genre: </span><%= item.genre.name %></li>
+                  <% comment = "" %>
+                  <% unless item.comment.nil? %>
+                  <% comment = item.comment %>
+                  <% end %>
+                  <li class="itemdata-l"><span>Comment: </span><%= comment %></li>
+                </ul>
+                <div>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %>
+                  <%= link_to 'このアイテム情報を削除', item_path(item.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
+                </div>
+              </li>

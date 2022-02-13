@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     end
     @all_price = sum_price  
   end
+  def show
+    @item = Item.find(params[:id])
+    @items = []
+  end
   def new
     @item = Item.new
   end
