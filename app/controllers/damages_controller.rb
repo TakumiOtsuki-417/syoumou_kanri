@@ -5,7 +5,6 @@ class DamagesController < ApplicationController
   end
   def create
     @damage = Damage.new(damage_params)
-    binding.pry
     if @damage.save
       redirect_to item_path(@item.id)
     else
