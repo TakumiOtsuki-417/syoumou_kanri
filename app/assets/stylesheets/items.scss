@@ -1,3 +1,53 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#topics {
+  position: relative;
+  z-index: 10;
+padding-top: 3vw;
+.hide {
+  display:none;
+}
+}
+
+.tab{
+overflow:hidden;
+display: flex;
+li{
+  width: 50%;
+  padding: 0 0 20px 0;
+  margin-right:20px;
+  flex: 1;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+  letter-spacing: .05em;
+  img {
+      max-width: 80px;
+      display: block;
+      margin: 10px auto;
+  }
+  &:last-child {
+      margin-right: 0;
+  }
+  &:hover {
+      cursor: pointer;
+      color: #000080;
+  }
+}
+.select {
+  border-bottom: 2px solid #000080;
+  color: #000080;
+}
+}
+
+.topicon  {
+div {
+padding: 50px;
+p {
+line-height: 2;
+letter-spacing: .1em;
+}
+}
+}
