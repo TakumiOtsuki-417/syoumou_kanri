@@ -1,12 +1,13 @@
             <ul>
             <% search_damages.each do |search_damage| %>
-              <li class="item">
+              <% damage_price = (search_damage.item.price * search_damage.amount / 100 ).round(2) %>
+              <li class="item item-syouhi">
                 <span>固有ID: <%= search_damage.id %></span>
                 <ul>
                   <li class="itemdata-s"><span>Date: </span><%= search_damage.date %></li>
-                  <li class="itemdata-s"><span>アイテム名: </span><%= search_damage.name %></li>
+                  <li class="itemdata-s"><span>アイテム名: </span><%= search_damage.item.name %></li>
                   <li class="itemdata-s"><span>消費量: </span><%= search_damage.amount %>%</li>
-                  <li class="itemdata-s"><span>価格計算: </span><%= search_damage.price %>円</li>
+                  <li class="itemdata-s"><span>価格計算: </span><%= damage_price %>円</li>
                   <% comment = "" %>
                   <% unless search_damage.comment.nil? %>
                   <% comment = search_damage.comment %>

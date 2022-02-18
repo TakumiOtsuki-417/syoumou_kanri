@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :damages,except:[ :index, :show ]
   end
   get "search", to: "items#search"
+  get "search_d", to: "items#search_d"
 end
