@@ -1,0 +1,19 @@
+              <li class="item item-syouhi">
+              <% damage_price = (damage.item.price * damage.amount / 100 ).round(2) %>
+                <span>固有ID: <%= damage.id %></span>
+                <ul>
+                  <li class="itemdata-s"><span>Date: </span><%= damage.date %></li>
+                  <li class="itemdata-s"><span>消費アイテム名: </span><%= damage.item.name %></li>
+                  <li class="itemdata-s"><span>消費量: </span><%= damage.amount %>%</li>
+                  <li class="itemdata-s"><span>消費価格計算: </span><%= damage_price %>円</li>
+                  <% comment = "" %>
+                  <% unless damage.comment.nil? %>
+                  <% comment = damage.comment %>
+                  <% end %>
+                  <li class="itemdata-l"><span>備考: </span><%= comment %></li>
+                </ul>
+                <div>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(damage.id) %><span>  / </span>
+                  <%= link_to 'このアイテム情報を削除', item_path(damage.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
+                </div>
+              </li>

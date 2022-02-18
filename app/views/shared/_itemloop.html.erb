@@ -2,19 +2,27 @@
                 <span>固有ID: <%= item.id %></span>
                 <ul>
                   <li class="itemdata-s"><span>Date: </span><%= item.date %></li>
-                  <li class="itemdata-s"><span>Name: </span><%= item.name %></li>
-                  <li class="itemdata-s"><span>Amount: </span><%= item.amount %>%</li>
-                  <li class="itemdata-s"><span>Price: </span><%= item.price %>円</li>
-                  <li class="itemdata-s"><span>From: </span><%= item.from.name %></li>
-                  <li class="itemdata-s"><span>Genre: </span><%= item.genre.name %></li>
+                  <% if rest.nil? %>
+                  <li class="itemdata-s"><span>アイテム名: </span><%= item.name %></li>
+                  <% else %>
+                  <li class="itemdata-s"><span>現在残り残量: </span><%= rest %>%</li>
+                  <% end %>
+                  <li class="itemdata-s"><span>元々の購入量: </span><%= item.amount %>%</li>
+                  <li class="itemdata-s"><span>購入価格: </span><%= item.price %>円</li>
+                  <li class="itemdata-s"><span>購入場所: </span><%= item.from.name %></li>
+                  <li class="itemdata-s"><span>ジャンル: </span><%= item.genre.name %></li>
                   <% comment = "" %>
                   <% unless item.comment.nil? %>
                   <% comment = item.comment %>
                   <% end %>
-                  <li class="itemdata-l"><span>Comment: </span><%= comment %></li>
+                  <li class="itemdata-l"><span>備考: </span><%= comment %></li>
                 </ul>
                 <div>
-                  <%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %>
-                  <%= link_to 'このアイテム情報を削除', item_path(item.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
+                <% unless current_page?(item_path(item.id)) %>
+                  <%= link_to '詳細', item_path(item.id) %><span>  / </span>
+                <% end %>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %><span>  / </span>
+                  <%= link_to 'このアイテム情報を削除', item_path(item.id), method: 'delete', data: { confirm: "気は確かですか？" } %><span>  / </span>
+                  <%= link_to 'このアイテムの消費を記録', new_item_damage_path(item.id) %>
                 </div>
               </li>

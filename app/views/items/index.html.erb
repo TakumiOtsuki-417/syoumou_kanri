@@ -1,57 +1,61 @@
-        <div class="block-fullwidth">
-          <h2>今月の買い物金額は<%= @all_price %>円です</h2>
-          <div class="block-items">
-            <ul>
-              <% @items.each do |item| %>
-              <%= render partial: 'shared/itemloop', locals: {item: item} %>
-              <% end %>
-            </ul>
-          </div>
+<div id="topics" class="block-fullwidth">
+  <h2>今月の買い物金額は<%= @all_price %>円です</h2>
+  <ul class="tab flexbox fw">
+    <li class="select">TAB01[週ごと]</li>
+    <li>TAB02[月ごと]</li>
+  </ul>
+  <!-- 切り替えのタブ --> 
+  <div class="topicon">
+    <div class="block-items">
+      <h2>週ごとの買い物</h2>
+      <% #(@week_num + 1).times do |i| %>
+      <% 4.times do |i| %>
+        <% from = @sunday - (7 * i) %>
+        <% to = from + 6 %>
+        <% items = @items.where(date: from..to) %>
+        <% damages = @damages.where(date: from..to) %>
+        <h3><%= i %>週前の買い物</h3>
+        <% if items.present? %>
+        <ul>
+          <% items.each do |item| %>
+            <%= render partial: 'shared/itemloop', locals: {item: item, rest: @rest} %>
+          <% end %>
+        </ul>
+        <% else %>
+        <div class="no-data">
+          <p>特にありませんの</p>
         </div>
-        <div class="block-fullwidth">
-          <h2>今月の消費金額は333円です</h2>
-          <div class="block-items">
-            <ul>
-              <li class="item item-syouhi">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>消費量: </span>100%</li>
-                  <li class="itemdata-s"><span>消費計算Price: </span>332円</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item item-syouhi">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>消費量: </span>100%</li>
-                  <li class="itemdata-s"><span>消費計算Price: </span>332円</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item item-syouhi">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>消費量: </span>100%</li>
-                  <li class="itemdata-s"><span>消費計算Price: </span>332円</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-              <li class="item item-syouhi">
-                <span>number:12345678</span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span>2/1</li>
-                  <li class="itemdata-s"><span>Name: </span>にんじん</li>
-                  <li class="itemdata-s"><span>消費量: </span>100%</li>
-                  <li class="itemdata-s"><span>消費計算Price: </span>332円</li>
-                  <li class="itemdata-l"><span>Comment: </span>コメントコメントコメントコメントコメント</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+        <% end %>
+        <h3><%= i %>週前の消費</h3>
+        <% if damages.present? %>
+        <ul>
+          <% damages.each do |damage| %>
+            <%= render partial: 'shared/damageloop', locals: {damage: damage} %>
+          <% end %>
+        </ul>
+        <% else %>
+        <div class="no-data">
+          <p>特にありませんの</p>
         </div>
+        <% end %>
+      <% end %>
+      
+    </div>
+    <!-- tab01 -->
+    <div class="block-items hide">
+      <h2>月ごとの買い物</h2>
+      <%= form_with url: search_path, method: :get, remote: true do |f| %>
+        <%= f.date_select("search", {start_year: 2022, use_month_numbers: true, discard_day: true, include_blank: true, selected: Date.today}) %>
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+      <div id="search_result">
+        <% if @search_items.present? %>
+          <%= render partial: 'shared/search', locals: {search_items: @search_items, search_damages: @search_damages, rest: @rest} %>
+        <% else %>
+          <p>⏫時期をセレクトしてください</p>
+        <% end %>
+      </div>
+    </div>
+    <!-- tab02 -->
+ </div>
+</div>

@@ -2,34 +2,17 @@
           <h2>詳細データ</h2>
           <div class="block-items">
             <ul>
-              <%= render partial: 'shared/itemloop', locals:{item: @item} %>
+              <%= render partial: 'shared/itemloop', locals:{item: @item, rest: @rest} %>
             </ul>
           </div>
         </div>
         <div class="block-fullwidth">
           <h2>このアイテムの消費データ</h2>
           <div class="block-items">
-            <% unless @items == [] %>
+            <% unless @damages == [] %>
             <ul>
-              <% @items.each do |item| %>
-              <li class="item">
-                <span>固有ID: <%= item.id %></span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span><%= item.date %></li>
-                  <li class="itemdata-s"><span>Name: </span><%= item.name %></li>
-                  <li class="itemdata-s"><span>消費量: </span><%= item.amount %>%</li>
-                  <li class="itemdata-s"><span>消費計算Price: </span><%= item.price %>円</li>
-                  <% comment = "" %>
-                  <% unless item.comment.nil? %>
-                  <% comment = item.comment %>
-                  <% end %>
-                  <li class="itemdata-l"><span>Comment: </span><%= comment %></li>
-                </ul>
-                <div>
-                  <%= link_to 'このアイテム情報を編集', edit_item_path(item.id) %>
-                  <%= link_to 'このアイテム情報を削除', item_path(item.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
-                </div>
-              </li>
+              <% @damages.each do |damage| %>
+              <%= render partial: 'shared/damageloop', locals: {damage: damage} %>
               <% end %>
               <% else %>
             </ul>

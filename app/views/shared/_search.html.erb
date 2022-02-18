@@ -1,0 +1,24 @@
+            <h3>買い物リスト</h3>
+            <% if search_items.present? %>
+            <ul>
+            <% search_items.each do |search_item| %>
+              <%= render partial: 'shared/itemloop', locals: {item: search_item, rest: rest} %>
+            <% end %>
+            </ul>
+            <h3>消費リスト</h3>
+            <% else %>
+              <div class="no-data">
+              <p>特にありませんの</p>
+              </div>
+            <% end %>
+            <% if search_damages.present? %>
+            <ul>
+            <% search_damages.each do |search_damage| %>
+              <%= render partial: 'shared/damageloop', locals: {damage: search_damage} %>
+            <% end %>
+            </ul>
+            <% else %>
+              <div class="no-data">
+              <p>特にありませんの</p>
+              </div>
+            <% end %>
