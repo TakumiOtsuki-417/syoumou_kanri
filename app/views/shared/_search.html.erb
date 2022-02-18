@@ -21,8 +21,8 @@
                 </ul>
                 <div>
                   <%= link_to '詳細', item_path(search_item.id) %>
-                  <%= link_to 'このアイテム情報を編集', edit_item_path(search_item.id) %>
-                  <%= link_to 'このアイテム情報を削除', item_path(search_item.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(search_item.id) %><span>  / </span>
+                  <%= link_to 'このアイテム情報を削除', item_path(search_item.id), method: 'delete', data: { confirm: "気は確かですか？" } %><span>  / </span>
                   <%= link_to 'このアイテムの消費を記録', new_item_damage_path(search_item.id) %>
                 </div>
               </li>

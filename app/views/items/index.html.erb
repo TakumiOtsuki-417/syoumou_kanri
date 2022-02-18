@@ -15,17 +15,29 @@
         <% items = @items.where(date: from..to) %>
         <% damages = @damages.where(date: from..to) %>
         <h3><%= i %>週前の買い物</h3>
+        <% if items.present? %>
         <ul>
           <% items.each do |item| %>
             <%= render partial: 'shared/itemloop', locals: {item: item, rest: @rest} %>
           <% end %>
         </ul>
+        <% else %>
+        <div class="no-data">
+          <p>特にありませんの</p>
+        </div>
+        <% end %>
         <h3><%= i %>週前の消費</h3>
+        <% if damages.present? %>
         <ul>
           <% damages.each do |damage| %>
             <%= render partial: 'shared/damageloop', locals: {damage: damage} %>
           <% end %>
         </ul>
+        <% else %>
+        <div class="no-data">
+          <p>特にありませんの</p>
+        </div>
+        <% end %>
       <% end %>
       
     </div>

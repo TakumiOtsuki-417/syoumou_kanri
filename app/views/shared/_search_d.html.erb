@@ -15,7 +15,7 @@
                   <li class="itemdata-l"><span>備考: </span><%= comment %></li>
                 </ul>
                 <div>
-                  <%= link_to 'この情報を編集', edit_item_path(search_damage.id) %>
+                  <%= link_to 'この情報を編集', edit_item_path(search_damage.id) %><span>  / </span>
                   <%= link_to 'この情報を削除', item_path(search_damage.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
                 </div>
               </li>

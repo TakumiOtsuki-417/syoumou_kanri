@@ -13,7 +13,7 @@
                   <li class="itemdata-l"><span>備考: </span><%= comment %></li>
                 </ul>
                 <div>
-                  <%= link_to 'このアイテム情報を編集', edit_item_path(damage.id) %>
+                  <%= link_to 'このアイテム情報を編集', edit_item_path(damage.id) %><span>  / </span>
                   <%= link_to 'このアイテム情報を削除', item_path(damage.id), method: 'delete', data: { confirm: "気は確かですか？" } %>
                 </div>
               </li>
