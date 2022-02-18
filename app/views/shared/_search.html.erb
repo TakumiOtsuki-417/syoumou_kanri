@@ -1,30 +1,24 @@
+            <h3>買い物リスト</h3>
+            <% if search_items.present? %>
             <ul>
             <% search_items.each do |search_item| %>
-              <li class="item">
-                <span>固有ID: <%= search_item.id %></span>
-                <ul>
-                  <li class="itemdata-s"><span>Date: </span><%= search_item.date %></li>
-                  <% if rest.nil? %>
-                  <li class="itemdata-s"><span>アイテム名: </span><%= search_item.name %></li>
-                  <% else %>
-                  <li class="itemdata-s"><span>現在残り残量: </span><%= rest %>%</li>
-                  <% end %>
-                  <li class="itemdata-s"><span>元々の購入量: </span><%= search_item.amount %>%</li>
-                  <li class="itemdata-s"><span>購入価格: </span><%= search_item.price %>円</li>
-                  <li class="itemdata-s"><span>購入場所: </span><%= search_item.from.name %></li>
-                  <li class="itemdata-s"><span>ジャンル: </span><%= search_item.genre.name %></li>
-                  <% comment = "" %>
-                  <% unless search_item.comment.nil? %>
-                  <% comment = search_item.comment %>
-                  <% end %>
-                  <li class="itemdata-l"><span>備考: </span><%= comment %></li>
-                </ul>
-                <div>
-                  <%= link_to '詳細', item_path(search_item.id) %>
-                  <%= link_to 'このアイテム情報を編集', edit_item_path(search_item.id) %><span>  / </span>
-                  <%= link_to 'このアイテム情報を削除', item_path(search_item.id), method: 'delete', data: { confirm: "気は確かですか？" } %><span>  / </span>
-                  <%= link_to 'このアイテムの消費を記録', new_item_damage_path(search_item.id) %>
-                </div>
-              </li>
+              <%= render partial: 'shared/itemloop', locals: {item: search_item, rest: rest} %>
             <% end %>
             </ul>
+            <h3>消費リスト</h3>
+            <% else %>
+              <div class="no-data">
+              <p>特にありませんの</p>
+              </div>
+            <% end %>
+            <% if search_damages.present? %>
+            <ul>
+            <% search_damages.each do |search_damage| %>
+              <%= render partial: 'shared/damageloop', locals: {damage: search_damage} %>
+            <% end %>
+            </ul>
+            <% else %>
+              <div class="no-data">
+              <p>特にありませんの</p>
+              </div>
+            <% end %>
